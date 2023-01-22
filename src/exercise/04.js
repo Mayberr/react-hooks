@@ -60,10 +60,10 @@ function Game() {
     setCurrentSquares(squaresCopy)
   }
  
-  const moves = history.map((squares) => 
-    <li key={calculateMoveIndex(squares).toString()} ><button
+  const moves = history.map((squares,index) => 
+    <li key={index.toString()} ><button
       onClick={() => setCurrentSquares(squares)}
-      disabled={Boolean(calculateMoveIndex(squares) === currentMoveIndex)}>{calculateMoveIndex(squares) === 0 ? 'Go to game start' : `Go to move #${calculateMoveIndex(squares)}`}</button></li>
+      disabled={Boolean(index === currentMoveIndex)}>{index === 0 ? 'Go to game start' : `Go to move #${index}`}</button></li>
   )
   
   function restart() {
