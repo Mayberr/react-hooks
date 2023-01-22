@@ -45,7 +45,7 @@ function Game() {
   const winner = calculateWinner(currentSquares)
   const status  = calculateStatus(winner, currentSquares ,nextValue)
   const currentMoveIndex = calculateMoveIndex(currentSquares)
-  console.log(currentMoveIndex)
+
   function selectSquare(square) {
    
     if (currentSquares[square] || winner) {
@@ -61,9 +61,13 @@ function Game() {
   }
  
   const moves = history.map((squares,index) => 
-    <li key={index.toString()} ><button
-      onClick={() => setCurrentSquares(squares)}
-      disabled={Boolean(index === currentMoveIndex)}>{index === 0 ? 'Go to game start' : `Go to move #${index}`}</button></li>
+    <li key={index.toString()} >
+      <button
+        onClick={() => setCurrentSquares(squares)}
+        disabled={index === currentMoveIndex}>
+          {index === 0 ? 'Go to game start' : `Go to move #${index}`}
+      </button>
+    </li>
   )
   
   function restart() {
@@ -71,6 +75,7 @@ function Game() {
     setCurrentSquares(Array(9).fill(null))
     setHistory([Array(9).fill(null)])
   }
+
   return (
     <div className="game">
     <div className="game-board">
